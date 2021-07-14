@@ -1,0 +1,56 @@
+@model OrderFinishViewModel
+
+@{
+    ViewData["Title"] = "Objednávka";
+}
+
+
+<h1>@Model.DestinationTerm.Destination.Title</h1>
+<p>@Model.DestinationTerm.From.ToString("dd.M. yyyy") - @Model.DestinationTerm.To.ToString("dd.M. yyyy")</p>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <div class="form-group">
+            <div>@Html.LabelFor(a => a.Name)</div>
+            <div>@Html.EditorFor(a => a.Name)</div>
+        </div>
+        
+        <div class="form-group">
+            <div>@Html.LabelFor(a => a.Surname)</div>
+            <div>@Html.EditorFor(a => a.Surname)</div>
+        </div>
+        
+        <div class="form-group">
+            <div>@Html.LabelFor(a => a.Phone)</div>
+            <div>@Html.EditorFor(a => a.Phone)</div>
+        </div>
+        
+        <div class="form-group">
+            <div>@Html.LabelFor(a => a.Email)</div>
+            <div>@Html.EditorFor(a => a.Email)</div>
+        </div>
+        
+        <div class="form-group">
+            <div>@Html.LabelFor(a => a.NumberOfPersons)</div>
+            <div>@Html.EditorFor(a => a.NumberOfPersons)</div>
+        </div>
+        
+        <div class="form-group">
+            <div>@Html.LabelFor(a => a.Note)</div>
+            <div>@Html.EditorFor(a => a.Note)</div>
+        </div>
+        
+        
+        <div class="form-group">
+            @Html.ValidationSummary()
+        </div>
+        
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Odeslat">
+        </div>
+    </div>
+}
+
+
+

@@ -1,0 +1,20 @@
+﻿@using ASPHomework.Persistence.Entities
+@using ASPHomework.Views.Shared.Helpers
+@model HomeIndexViewModel
+@{
+    ViewData["Title"] = "Úvod";
+}
+
+
+ <div class="destinations">
+        @foreach (Destination destination in Model.Destinations)
+        {
+            <div class="destination">
+                <h2>@destination.Title</h2>
+                <p>Kapacita: @destination.Capacity</p>
+                <p>@destination.Description.Truncate(200)</p>
+                
+                <a class="btn btn-primary" asp-controller="Order" asp-action="Index" asp-route-id="@destination.Id">Rezervace</a>
+            </div>
+        }
+ </div>

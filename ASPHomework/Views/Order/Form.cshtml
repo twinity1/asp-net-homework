@@ -1,0 +1,64 @@
+@using ASPHomework.Persistence.Entities
+@model OrderIndexViewModel
+
+@{
+    Layout = null;
+}
+
+<div>
+    <form asp-action="NextConfirm" asp-route-id="@Model.Destination.Id">
+        <div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.From)
+                @Html.EditorFor(m => m.From)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.To)
+                @Html.EditorFor(m => m.To)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.NumberOfPersons)
+                @Html.EditorFor(m => m.NumberOfPersons)
+            </div>
+            
+            @if (Model.ShowTerms)
+            {
+                <div>
+                    @if(Model.Terms.Count != 0) {
+                        @foreach (DestinationTerm term in Model.Terms)
+                        {
+                            <div class="term row">
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        @Html.RadioButtonFor(model => model.DestinationTermId, term.Id, new {id = "term-" + term.Id})
+                                        <label for="term-@term.Id">
+                                            <span>
+                                                @term.From.ToString("dd.MM.yyyy") - @term.To.ToString("dd.MM.yyyy")<br>
+                                                (Volná místa: @term.CountFreeCapacity())
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <span>Pro toto období není dostupuný žádný termín.</span>
+                    }
+                </div>
+            }
+
+            <div class="form-group">
+                @Html.ValidationSummary()
+            </div>
+            
+            @if (Model.DestinationTermId != null)
+            {
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Další">
+                </div>
+            }
+         </div>
+    </form>
+</div>

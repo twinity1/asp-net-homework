@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPHomework", "ASPHomework\ASPHomework.csproj", "{8F414D37-DCF1-41AD-A642-E7CDFCB2348A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPHomeworkTests", "ASPHomeworkTests\ASPHomeworkTests.csproj", "{4B40A030-124D-4A41-A830-83A9C01371F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F414D37-DCF1-41AD-A642-E7CDFCB2348A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F414D37-DCF1-41AD-A642-E7CDFCB2348A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F414D37-DCF1-41AD-A642-E7CDFCB2348A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F414D37-DCF1-41AD-A642-E7CDFCB2348A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B40A030-124D-4A41-A830-83A9C01371F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B40A030-124D-4A41-A830-83A9C01371F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B40A030-124D-4A41-A830-83A9C01371F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B40A030-124D-4A41-A830-83A9C01371F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

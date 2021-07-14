@@ -1,0 +1,76 @@
+@model OrderIndexViewModel
+@{
+    ViewData["Title"] = "Výběr termínu";
+}
+
+<div>
+<a class="btn btn-secondary" asp-controller="Home" asp-action="Index">Zpět</a>    
+</div>
+
+
+<br>
+
+<h1>@Model.Destination.Title</h1>
+<p>@Model.Destination.Description</p>
+
+
+<div id="form">
+    @if (Model.IsFull)
+    {
+        <span><strong>Yikes! Daný termín je již obsazen. Vyberte si prosím jiný.</strong></span>   
+    }
+    
+    <partial name="Form"/>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(function() {
+            const properties = [
+                "@nameof(Model.From)",
+                "@nameof(Model.To)",
+                "@nameof(Model.NumberOfPersons)"
+            ];
+            
+            
+            let change = function(extraData) {
+                let data = {
+                    Id: @Model.Destination.Id
+                };
+                
+                properties.forEach(property => {
+                    const input = $("#" + property);
+ 
+                    data[property] = input.val(); 
+                });
+                
+                if (typeof extraData === "object") {
+                    Object.keys(extraData).forEach((key) =>{
+                        data[key] = extraData[key];
+                    });
+                }
+              
+                $.ajax({
+                    url: "@Url.Action("Form")",
+                    data: data,
+                    success(html) {
+                        $("#form").html(html);
+                    }
+                });
+            };
+            
+            properties.forEach(property => {
+                $("body").on("change", "#" + property, function() {
+                    change();
+                });
+            });
+            
+            $("body").on("change", "input[name='@nameof(Model.DestinationTermId)']", function() {
+                change({
+                    '@nameof(Model.DestinationTermId)': $(this).val() 
+                });
+            });
+        });
+    </script>
+}
